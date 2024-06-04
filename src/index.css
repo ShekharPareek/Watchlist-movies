@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom CSS */
+
+#root{
+    position: relative;
+}
+#three_dots:after{
+    content: '\2807';
+    font-size:15px;
+    margin-left: 25px;
+    cursor: pointer;
+}
+.tool_bar{
+    display:none;
+}
+
+body{
+    overflow: hidden;
+}
