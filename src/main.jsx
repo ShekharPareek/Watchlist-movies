@@ -1,44 +1,23 @@
-// import React from 'react'
-// import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
-// import RegisterForm from './components/Register'
-// import MyList from './components/mylist'
-// import Layout from './layout'
-// import MainSection from './components/mainsection'
-// import ReactDOM from 'react-dom/client'
-// import './index.css'
-// const router = createBrowserRouter(
-//   createRoutesFromElements(
-//     <Route path='/' element={<Layout />}>
-//       <Route path='/' element={<MainSection/>}/>
-//       <Route path='mylist' element={<MyList />} />
-//     </Route>
-//   )
-// )
-
-// ReactDOM.createRoot(document.getElementById('root')).render(
-//   <React.StrictMode>
-//     <RegisterForm />
-//     <RouterProvider router={router} />
-//   </React.StrictMode>,
-// )
-
-
 import React from 'react';
-import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
-import RegisterForm from './components/Register';
-import MyList from './components/mylist';
-import Layout from './layout';
-import MainSection from './components/mainsection';
+import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider, Navigate } from 'react-router-dom';
 import ReactDOM from 'react-dom/client';
+import RegisterEmail from './components/Register';
+import Home from './components/home';
+import Layout from './layout';
+import MyList from './components/mylist';
+import MainSection from './components/mainsection';
 import './index.css';
+
+const getEmail = localStorage.getItem('User');
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-  
-        <Route path='/' element={<Layout />}>
-      <Route index element={<MainSection />} />
-      <Route path='mylist' element={<MyList />} />
-      <Route path='' element={<RegisterForm />} />
+    <Route path="/" element={<Layout />}>
+      {/* If user is authenticated, show Home component, otherwise show RegisterEmail component */}
+      <Route index element={getEmail ? <Navigate to="/home" /> : <RegisterEmail />} />
+      <Route path="home" element={getEmail ? <Home /> : <Navigate to="/" />} />
+      <Route path="mylist" element={getEmail ? <MyList /> : <Navigate to="/" />} />
+      <Route path="*" element={<MainSection />} />
     </Route>
   )
 );

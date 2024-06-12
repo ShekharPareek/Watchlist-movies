@@ -1,19 +1,18 @@
 import React, { useState } from 'react';
-import Home from './home.jsx';
-import { Outlet} from 'react-router-dom';
-
-
+import { useNavigate } from 'react-router-dom';
+import { Outlet } from 'react-router-dom'
 
 function RegisterEmail() {
     const [email, setEmail] = useState('');
-    const getEmail = localStorage.getItem('email');
-    
+    const navigate = useNavigate();
+    const getEmail = localStorage.getItem('User');
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Store email in localStorage and reload the page
-        localStorage.setItem('User:', email);
+        // Store email in localStorage and navigate to the home page
+        localStorage.setItem('User', email);
         window.location.reload();
+        navigate('/home');
     };
 
     const handleEmailChange = (e) => {
@@ -23,7 +22,7 @@ function RegisterEmail() {
     return (
         <>
             {getEmail ? (
-                <Outlet></Outlet>
+                <Outlet />
             ) : (
                 <form onSubmit={handleSubmit} className="w-full max-w-xl bg-slate-100 my-[128px] mx-auto rounded-lg shadow-xl p-6">
                     <div className="text-red-600 text-4xl block font-bold tracking-tighter text-center mt-2 mb-3">
