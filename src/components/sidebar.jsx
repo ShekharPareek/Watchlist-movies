@@ -35,7 +35,7 @@ const Sidebar = () => {
           <div className="border-b pb-3">
             <ul>
             <NavLink
-             to="/"
+             to="/home"
                className={({ isActive }) => `
                hover:bg-red-500 text-gray-600 hover:text-white 
                relative flex flex-row items-center h-11 focus:outline-none
