@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react'
+import Header from "./header"
+import Sidebar from './sidebar';
 const MyList = () =>{
 const [selectedMovie,setSelectedMovie] = useState([]);
 const [buttonClicked,setButtonClicked] = useState(false);
@@ -43,10 +45,10 @@ const [buttonClicked,setButtonClicked] = useState(false);
         };
     return(
         <>
-            <h1 className='mt-14'>My Watchlist</h1>
-        {/* Content */}
+    <Header/>
+    <Sidebar/>
       {selectedMovie.length > 0 ? (
-        <div className="flex flex-wrap gap-5 p-14 justify-end overflow-y-auto h-screen">
+        <div className="flex flex-wrap gap-5 p-14 justify-end overflow-y-auto h-screen mt-8">
           {selectedMovie.map((movie,index) => (
             <div
             key={`${movie.id}-${index}`}
@@ -111,21 +113,8 @@ const [buttonClicked,setButtonClicked] = useState(false);
           ))}
         </div>
       ) : (
-        <p className="flex items-center text-gray-600">Sorry No Result Found</p>
+        <p className="flex items-center text-red-500">Sorry No Result Found</p>
       )}
-
-
-
-
-
-
-
-
-
-
-
-
-
             </>
   )
 
