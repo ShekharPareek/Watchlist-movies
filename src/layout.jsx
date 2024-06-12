@@ -7,8 +7,6 @@ import Home from './components/home'
 function Layout() {
   return (
     <>
-    <Header/>
-    <Sidebar/>
     <Outlet />
     </>
   )
